@@ -15,9 +15,31 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite,Category = "Test Variables")
+	int32 VisibleAnywhereInt = 12;
+
+	UPROPERTY(EditAnywhere, Category = "Test Variables")
+	int32 EditAnyWhereInt = 24;
+
+	UPROPERTY(EditInstanceOnly)
+	int32 SpeedInstance ;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
+	class UCapsuleComponent* CapsuleComp;
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
+	UStaticMeshComponent* BaseMesh;
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
+	UStaticMeshComponent* TurretMesh;
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
+	USceneComponent* ProjectileSpawnPoint;
 
 public:	
 	// Called every frame
