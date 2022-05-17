@@ -14,22 +14,13 @@ class TOONTANKS_API ABasePawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite,Category = "Test Variables")
-	int32 VisibleAnywhereInt = 12;
-
-	UPROPERTY(EditAnywhere, Category = "Test Variables")
-	int32 EditAnyWhereInt = 24;
-
-	UPROPERTY(EditInstanceOnly)
-	int32 SpeedInstance ;
 	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
 	class UCapsuleComponent* CapsuleComp;
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
@@ -44,8 +35,4 @@ private:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };
