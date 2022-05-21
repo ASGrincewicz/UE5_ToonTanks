@@ -3,7 +3,6 @@
 
 #include "Tank.h"
 
-#include "../../Plugins/Developer/RiderLink/Source/RD/thirdparty/spdlog/include/spdlog/fmt/bundled/core.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -28,9 +27,6 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 
 	PlayerControllerRef = Cast<APlayerController>(GetController());
-
-	DrawDebugSphere(GetWorld(),GetActorLocation() + FVector(0.f,0.f,200.f),100.f,12,FColor::Red,true,30.f);
-	
 }
 
 // Called every frame
@@ -54,6 +50,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"),this,&ATank::Move);
 
 	PlayerInputComponent->BindAxis(TEXT("Turn"),this,&ATank::Turn);
+
+	PlayerInputComponent->BindAction(TEXT("Fire"),IE_Pressed, this,&ATank::Fire);
 }
 
 void ATank::Move(float value)
@@ -63,7 +61,6 @@ void ATank::Move(float value)
 	float DeltaTime = UGameplayStatics::GetWorldDeltaSeconds(this);
 	DeltaLocation.X = value * Speed * DeltaTime;
 	AddActorLocalOffset(DeltaLocation,true);
-	UE_LOG(LogTemp,Display,TEXT("Move input value: %f"),value);
 }
 
 void ATank::Turn(float Value)

@@ -16,6 +16,13 @@ public:
 	ABasePawn();
 protected:
 	void RotateTurret(FVector LookAtTarget);
+	void Fire();
+
+	FTimerHandle FireRateTimerHandle;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float FireRate = 2.0f;
+	virtual void CheckFireCondition();
+	
 private:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
 	class UCapsuleComponent* CapsuleComp;
