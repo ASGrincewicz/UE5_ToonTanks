@@ -17,6 +17,9 @@ class TOONTANKS_API ATank : public ABasePawn
 public:
 	ATank();
 	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -39,5 +42,6 @@ private:
 	void Move(float value);
 
 	void Turn(float Value);
-	
+
+	APlayerController* PlayerControllerRef;
 };
