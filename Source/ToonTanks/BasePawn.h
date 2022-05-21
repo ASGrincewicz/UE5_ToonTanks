@@ -14,7 +14,8 @@ class TOONTANKS_API ABasePawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
-
+protected:
+	void RotateTurret(FVector LookAtTarget);
 private:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
 	class UCapsuleComponent* CapsuleComp;
