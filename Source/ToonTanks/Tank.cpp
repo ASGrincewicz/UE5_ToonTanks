@@ -21,6 +21,32 @@ ATank::ATank()
 
 	
 }
+
+// Called when the game starts or when spawned
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerControllerRef = Cast<APlayerController>(GetController());
+
+	DrawDebugSphere(GetWorld(),GetActorLocation() + FVector(0.f,0.f,200.f),100.f,12,FColor::Red,true,30.f);
+	
+}
+
+// Called every frame
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if(PlayerControllerRef)
+	{
+		FHitResult HitResult;
+		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false,HitResult);
+		DrawDebugSphere(GetWorld(),HitResult.ImpactPoint,20.f,6,FColor::Orange,false,-1.f);
+		RotateTurret(HitResult.ImpactPoint);
+	}
+}
+
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
