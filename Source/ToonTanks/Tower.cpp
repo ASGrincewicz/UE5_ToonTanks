@@ -5,6 +5,11 @@
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
 
+ATower::ATower()
+{
+	PrimaryActorTick.bCanEverTick = true;
+}
+
 void ATower::BeginPlay()
 {
 	Super::BeginPlay();

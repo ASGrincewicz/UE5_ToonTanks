@@ -15,7 +15,7 @@ class TOONTANKS_API ATower : public ABasePawn
 	GENERATED_BODY()
 
 public:
-
+	ATower();
 	virtual void Tick(float DeltaTime) override;
 
 protected:

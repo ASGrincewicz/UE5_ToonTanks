@@ -3,6 +3,7 @@
 
 #include "Tank.h"
 
+#include "HealthComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -16,9 +17,7 @@ ATank::ATank()
 	SpringArmComponent->TargetArmLength = 600;
 
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	CameraComponent->SetupAttachment(SpringArmComponent);
-
-	
+	CameraComponent->SetupAttachment(SpringArmComponent);	
 }
 
 // Called when the game starts or when spawned

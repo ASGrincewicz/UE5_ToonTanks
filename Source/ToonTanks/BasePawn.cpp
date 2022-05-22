@@ -22,6 +22,8 @@ ABasePawn::ABasePawn()
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));	
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)
