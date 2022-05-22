@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "HealthComponent.h"
 #include "GameFramework/Pawn.h"
 #include "BasePawn.generated.h"
 
@@ -16,6 +17,16 @@ public:
 	ABasePawn();
 protected:
 	void RotateTurret(FVector LookAtTarget);
+	void Fire();
+
+	FTimerHandle FireRateTimerHandle;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float FireRate = 2.0f;
+	virtual void CheckFireCondition();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health", meta = (AllowPrivateAccess = true))
+	UHealthComponent* HealthComponent;
+	
 private:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
 	class UCapsuleComponent* CapsuleComp;
@@ -29,4 +40,6 @@ private:
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category = "Pawn Components", meta = (AllowPrivateAccess = true))
 	USceneComponent* ProjectileSpawnPoint;
 
+	UPROPERTY(EditDefaultsOnly, Category= "Combat")
+	TSubclassOf<class AProjectile> ProjectileClass;
 };
