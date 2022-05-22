@@ -17,24 +17,30 @@ void ATower::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(Tank)
+	if(InFireRange())
 	{
-		float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
-		if(Distance <= FireRange)
-		{
-			RotateTurret(Tank->GetActorLocation());
-		}
+		RotateTurret(Tank->GetActorLocation());
 	}
 }
 
 void ATower::CheckFireCondition()
+{
+	if(InFireRange())
+	{
+		Fire();
+	}
+}
+
+bool ATower::InFireRange()
 {
 	if(Tank)
 	{
 		float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
 		if(Distance <= FireRange)
 		{
-			Fire();
+			return true;
 		}
 	}
+	return false;
 }
+

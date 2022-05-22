@@ -27,4 +27,6 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float FireRange = 300.f;
+
+	bool InFireRange();
 };
