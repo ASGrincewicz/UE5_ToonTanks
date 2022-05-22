@@ -22,6 +22,7 @@ protected:
 private:
 	UPROPERTY(EditAnywhere, Category = "Health")
 	float MaxHealth = 100.f;
+	UPROPERTY(VisibleAnywhere, Category = "Health")
 	float Health = 0.f;
 
 	UFUNCTION()
