@@ -20,6 +20,8 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 private:
+
+	class AToonTanksGameMode* ToonTanksGameMode;
 	UPROPERTY(EditAnywhere, Category = "Health")
 	float MaxHealth = 100.f;
 	UPROPERTY(VisibleAnywhere, Category = "Health")

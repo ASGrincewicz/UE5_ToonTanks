@@ -26,6 +26,12 @@ ABasePawn::ABasePawn()
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));	
 }
 
+void ABasePawn::HandleDestruction()
+{
+	//Visual and Sound Effects
+	
+}
+
 void ABasePawn::RotateTurret(FVector LookAtTarget)
 {
 	FVector ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();
