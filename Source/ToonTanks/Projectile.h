@@ -24,6 +24,10 @@ protected:
 private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	UStaticMeshComponent* ProjectileMesh;
-	
+	UPROPERTY(VisibleAnywhere)
+	class UProjectileMovementComponent* ProjectileMovementComponent;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp,AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 };
