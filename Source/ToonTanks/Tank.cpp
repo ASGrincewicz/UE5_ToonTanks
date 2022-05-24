@@ -20,12 +20,20 @@ ATank::ATank()
 	CameraComponent->SetupAttachment(SpringArmComponent);	
 }
 
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+}
+
+
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	TankPlayerController = Cast<APlayerController>(GetController());
 }
 
 // Called every frame
@@ -33,11 +41,11 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(PlayerControllerRef)
+	if(TankPlayerController)
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false,HitResult);
-		DrawDebugSphere(GetWorld(),HitResult.ImpactPoint,20.f,6,FColor::Orange,false,-1.f);
+		TankPlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,false,HitResult);
+		//DrawDebugSphere(GetWorld(),HitResult.ImpactPoint,20.f,6,FColor::Orange,false,-1.f);
 		RotateTurret(HitResult.ImpactPoint);
 	}
 }
