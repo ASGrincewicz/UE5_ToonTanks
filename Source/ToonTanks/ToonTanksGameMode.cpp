@@ -46,6 +46,10 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 	{
 		DestroyedTower->HandleDestruction();
 		TargetTowers--;
+		if(TargetTowers == 0)
+		{
+			GameOver(true);
+		}
 	}
 }
 
