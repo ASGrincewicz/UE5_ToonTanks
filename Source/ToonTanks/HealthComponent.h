@@ -23,7 +23,7 @@ private:
 
 	class AToonTanksGameMode* ToonTanksGameMode;
 	UPROPERTY(EditAnywhere, Category = "Health")
-	float MaxHealth = 100.f;
+	float MaxHealth = 200.f;
 	UPROPERTY(VisibleAnywhere, Category = "Health")
 	float Health = 0.f;
 
