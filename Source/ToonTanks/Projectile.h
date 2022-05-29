@@ -26,6 +26,8 @@ private:
 	UStaticMeshComponent* ProjectileMesh;
 	UPROPERTY(VisibleAnywhere)
 	class UProjectileMovementComponent* ProjectileMovementComponent;
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	class UParticleSystemComponent* SmokeTrailComponent;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float DamageAmount = 50.f;
