@@ -25,6 +25,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	APlayerController* GetTankPlayerController() const {return TankPlayerController;}
+	bool bAlive = true;
 
 protected:
 	// Called when the game starts or when spawned
